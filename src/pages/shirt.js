@@ -22,8 +22,10 @@ const shirt = ({ Products }) => {
                                         <h2 className="text-gray-900 title-font text-lg font-medium">{Products[item].title}</h2>
                                         <p className="mt-1">₹{Products[item].price}</p>
                                         <div className="mt-1">
-                                            {Products[item].size.includes('S') && <span className='border border-gray-400 px-1 mx-1'>S</span>} {Products[item].size.includes('M') && <span className='border border-gray-400 px-1 mx-1'>M</span>}
-                                            {Products[item].size.includes('L') && <span className='border border-gray-400 px-1 mx-1'>L</span>}      {Products[item].size.includes('XL') && <span className='border border-gray-400 px-1 mx-1'>XL</span>}
+                                            {Products[item].size.includes('S') && <span className='border border-gray-400 px-1 mx-1'>S</span>}
+                                            {Products[item].size.includes('M') && <span className='border border-gray-400 px-1 mx-1'>M</span>}
+                                            {Products[item].size.includes('L') && <span className='border border-gray-400 px-1 mx-1'>L</span>}
+                                            {Products[item].size.includes('XL') && <span className='border border-gray-400 px-1 mx-1'>XL</span>}
                                             {Products[item].size.includes('XXL') && <span className='border border-gray-400 px-1 mx-1'>XXL</span>}
                                         </div>
                                         <div className="mt-1">
