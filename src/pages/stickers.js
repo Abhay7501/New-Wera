@@ -1,12 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 
+
 const stickers = () => {
     return (
         <div>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-wrap m-5 object-center">
+                    <div className="flex flex-wrap m-5 justify-center">
                         <Link href={"/product/tshirt"} className=" mb-5" >
                             <div className="p-5 w-full cursor-pointer">
                                 <a className="block h-50 rounded overflow-hidden shadow-2xl">

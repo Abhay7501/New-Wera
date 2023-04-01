@@ -2,6 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import { AiOutlineShoppingCart, AiFillCloseCircle, AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
 import { BsFillBagCheckFill } from 'react-icons/bs'
+import { MdAccountCircle } from 'react-icons/md'
+import Image from 'next/image'
+// import logo from '../public/logo.png'
 import { useRef } from 'react'
 
 const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
@@ -18,10 +21,10 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
     }
     const ref = React.useRef()
     return (
-        <div className='shadow-xl '>
+        <div className='fixed top-0 left-0 right-0 z-index:9999 shadow-xl bg-white'>
             <Link href={"/"} >
                 <div className="flex ">
-                    <img src="NEW WERA1.PNG" className='W-12 h-12 mt-5 ml-5 ' alt="" />
+                    <Image src="/logo.png" width={30} height={25} className='mt-5 ml-5' alt="" />
                     <span className="ml-5 mt-7 text-xl font-bold text-red-900">New Wera</span>
                 </div>
             </Link>
@@ -35,11 +38,14 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
                 </ul>
             </div>
 
-            <div onClick={sideCart}>
-                <AiOutlineShoppingCart className="cart absolute right-0 mx-5 
-              top-5 text-3xl cursor-pointer " />
+
+            <div className="flex">
+                <Link href={"/login"}><MdAccountCircle className="cart absolute right-0 mx-14
+              top-5 text-3xl cursor-pointer" /></Link>
+                <AiOutlineShoppingCart onClick={sideCart} className="cart absolute right-0 mx-5
+                    top-5 text-3xl cursor-pointer  " />
             </div>
-            <div ref={ref} className="sidebar absolute top-0 right-0 w-80 h-full bg-slate-500 p-5 transform translate-x-full transition-transform">
+            <div ref={ref} className="sidebar absolute top-0 right-0 h-[100vh] bg-slate-500 p-5 transform translate-x-full transition-transform ">
                 <div onClick={sideCart} className=" absolute top-0 right-5 text-xl cursor-pointer"><AiFillCloseCircle /></div>
                 <h2 className='font-bold text-2xl text-center'>Shopping cart</h2>
                 <ol className="list-decimal">
@@ -55,11 +61,12 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
                     })}
                 </ol>
                 <div className="flex">
-                    <button class="flex mr-1 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg"><BsFillBagCheckFill className='m-1' />Checkout</button>
+                    <Link href={"/checkout"}><button className="flex mr-1 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg"><BsFillBagCheckFill className='m-1' />Checkout</button></Link>
                     <button onClick={clearCart} className="flex mr-2 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg">Clear Cart</button>
                 </div>
             </div>
-        </div>
+        </div >
+
     )
 }
 
