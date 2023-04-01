@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
       <title>New Wera</title>
       <meta name="description" content="Newwear.com " />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/logo.PNG" />
+      <link rel="icon" href="/logo.png" />
     </Head>
     <Navbar cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
     <Component cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
