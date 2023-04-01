@@ -18,7 +18,7 @@ export default function Home() {
       </Head> */}
 
       <div className="mt-10 flex justify-center">
-        <img className="mt-24 rounded-2xl shadow-2xl" src="img.jpg" alt="" />
+        <img className="mt-24 rounded-2xl shadow-2xl" src="IMG.jpg" alt="" />
       </div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
