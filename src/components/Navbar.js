@@ -30,7 +30,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
             </Link>
 
             <div className='flex justify-center '>
-                <ul className='flex space-x-8 text-2xl font-medium '>
+                <ul className='flex space-x-8 text-xl font-medium'>
                     <Link href={"/shirt"} ><li className='hover:dark:text-blue-900'>Shirt</li></Link>
                     <Link href={"/Tshirt"}><li className='hover:dark:text-blue-900'>T-shirt</li></Link>
                     <Link href={"/hoodies"}><li className='hover:dark:text-blue-900'>Hoodies</li></Link>
