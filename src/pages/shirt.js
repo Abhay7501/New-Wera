@@ -27,13 +27,20 @@ const shirt = ({ Products }) => {
                                             {Products[item].size.includes('L') && <span className='border border-gray-400 px-1 mx-1'>L</span>}
                                             {Products[item].size.includes('XL') && <span className='border border-gray-400 px-1 mx-1'>XL</span>}
                                             {Products[item].size.includes('XXL') && <span className='border border-gray-400 px-1 mx-1'>XXL</span>}
+
                                         </div>
+                                        {/* const availableSizes = ['S', 'M', 'L', 'XL', 'XXL'];
+
+                                        {availableSizes.map((size) => (
+                                            Products[item].size.includes(size) && <span className='border border-gray-400 px-1 mx-1'>{size}</span>
+                                        ))} */}
+
                                         <div className="mt-1">
-                                            S,
-                                            M,
-                                            L,
-                                            XL,
-                                            XXL
+                                            {Products[item].color.includes('red') && <button className="border-2 border-red-900 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                            {Products[item].color.includes('blue') && <button className="border-2 border-red-900 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                            {Products[item].color.includes('green') && <button className="border-2 border-red-900 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                            {Products[item].color.includes('black') && <button className="border-2 border-red-900 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>}
+                                            {Products[item].color.includes('yellow') && <button className="border-2 border-red-900 ml-1 bg-yellow-900 rounded-full w-6 h-6 focus:outline-none"></button>}
                                         </div>
                                     </div>
                                 </div>

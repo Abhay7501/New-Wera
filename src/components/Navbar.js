@@ -21,20 +21,20 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
     }
     const ref = React.useRef()
     return (
-        <div className='fixed top-0 left-0 right-0 z-index:9999 shadow-xl bg-white'>
+        <div className='fixed top-0 left-0 right-0 z-index:9999 shadow-xl bg-white '>
             <Link href={"/"} >
                 <div className="flex ">
                     <Image src="/logo.png" width={30} height={25} className='mt-5 ml-5' alt="" />
-                    <span className="ml-5 mt-7 text-xl font-bold text-red-900">New Wera</span>
+                    <span className="ml-5 mt-7 text-xl font-bold text-red-900">New wear</span>
                 </div>
             </Link>
 
             <div className='flex justify-center '>
-                <ul className='flex space-x-8 text-xl '>
-                    <Link href={"/shirt"} ><li className=''>Shirt</li></Link>
-                    <Link href={"/Tshirt"}><li>T-shirt</li></Link>
-                    <Link href={"/hoodies"}><li>Hoodies</li></Link>
-                    <Link href={"/stickers"}><li>Stickers</li></Link>
+                <ul className='flex space-x-8 text-2xl font-medium '>
+                    <Link href={"/shirt"} ><li className='hover:dark:text-blue-900'>Shirt</li></Link>
+                    <Link href={"/Tshirt"}><li className='hover:dark:text-blue-900'>T-shirt</li></Link>
+                    <Link href={"/hoodies"}><li className='hover:dark:text-blue-900'>Hoodies</li></Link>
+                    <Link href={"/stickers"}><li className='hover:dark:text-blue-900'>Stickers</li></Link>
                 </ul>
             </div>
 
@@ -54,7 +54,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
                     {Object.keys(cart).map((k) => {
                         return <li key={k}>
                             <div className="flex my-3 text-lg ">
-                                <div className=" w-2/3 font-semibold ">{cart[k].name}</div>
+                                <div className=" w-2/3 font-semibold ">{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
                                 <div className=" item-center justify-center w-1/3 flex text-lg "><AiOutlineMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className=' cursor-pointer text-2xl mx-1' /> {cart[k].qty} <AiOutlinePlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className=' cursor-pointer text-2xl mx-1' /></div>
                             </div>
                         </li>

@@ -60,10 +60,10 @@ export default function App({ Component, pageProps }) {
   }
   return <>
     <Head>
-      <title>New Wera</title>
+      <title>New wear</title>
       <meta name="description" content="Newwear.com " />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/logo.png" />
+      <link rel="icon" href="/logo.png" className='rounded' />
     </Head>
     <Navbar cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
     <Component cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
