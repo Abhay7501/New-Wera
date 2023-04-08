@@ -8,10 +8,9 @@ export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({})
   const [subTotal, setSubTotal] = useState(0)
   useEffect(() => {
-    console.log("cart")
     try {
-      if (localStorage.getItem("Cart")) {
-        setCart(JSON.parse(localStorage.getItem("Cart")))
+      if (localStorage.getItem("cart")) {
+        setCart(JSON.parse(localStorage.getItem("cart")))
       }
     }
     catch (error) {
@@ -32,7 +31,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const addToCart = (itemCode, qty, price, name, size, variant) => {
-    let newCart = cart;
+    let newCart = JSON.parse(JSON.stringify(cart));;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty
     }

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import mongoose from 'mongoose'
-import Product from 'models/products'
+import products from 'models/products'
 
 const Post = ({ addToCart, product, varients }) => {
     console.log(product, varients)
@@ -24,14 +24,14 @@ const Post = ({ addToCart, product, varients }) => {
     const onChangepin = (e) => {
         setPin(e.target.value)
     }
-    const [color, setcolor] = useState(product.color)
-    const [size, setsize] = useState(product.size)
+    const [color, setcolor] = useState(products.color)
+    const [size, setsize] = useState(products.size)
 
     return <>
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                    <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={product.img} />
+                    <img alt="ecommerce" className="lg:w-1/2 w-full h-80 sm:h-96 md:h-1/3 object-cover object-center rounded" src={product.img} />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">New Wera</h2>
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} {product.size}/{product.color}</h1>
@@ -72,11 +72,11 @@ const Post = ({ addToCart, product, varients }) => {
                                 </a>
                             </span>
                         </div>
-                        <p className="leading-relaxed">{product.desc}</p>
+                        <p className="leading-relaxed">{products.desc}</p>
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             <div className="flex">
                                 <span className="mr-3">Color</span>
-                                {Object.keys(varients).includes('white') && Object.keys(varients['white']).includes(size) && <button className={`border-2 border-white rounded-full w-6 h-6 focus:outline-none`}></button>}
+                                {Object.keys(varients).includes('white') && <button className={`border-2 border-white rounded-full w-6 h-6 focus:outline-none`}></button>}
                                 {Object.keys(varients).includes('red') && <button className={`border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
                                 {Object.keys(varients).includes('blue') && <button className={`border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
                                 {Object.keys(varients).includes('green') && <button className={`border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
@@ -84,8 +84,8 @@ const Post = ({ addToCart, product, varients }) => {
                             </div>
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3">Size</span>
-                                <div className="relative">
-                                    <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-slate-200 focus:border-slate-500 text-base pl-3 pr-10">
+                                <div className="">
+                                    <select className="rounded border  border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-slate-200 focus:border-slate-500 text-base pl-3 pr-10">
                                         <option>SM</option>
                                         <option>M</option>
                                         <option>L</option>
@@ -100,7 +100,9 @@ const Post = ({ addToCart, product, varients }) => {
                             </div>
                         </div>
                         <div className="flex">
-                            <span className="title-font font-medium text-2xl text-gray-900">₹799</span>
+                            {/* {Object.keys(Products).map((item) => { */}
+                            <span className="title-font font-medium text-2xl text-gray-900">₹100</span>
+                            {/* })} */}
                             <button onClick={() => { addToCart(slug, 1, 799, product.title, product.size, product.color) }} className="flex ml-7 text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded">Add to Cart</button>
                             <button className="flex ml-4 text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded">Buy now</button>
                             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -108,6 +110,7 @@ const Post = ({ addToCart, product, varients }) => {
                                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                                 </svg>
                             </button>
+
                         </div>
                         <div className="pin mt-3 flex space-x-3">
                             <input onChange={onChangepin} placeholder="Pincode" className="px-2 border-2 border-gray-500 rounded-md" type="text" />
@@ -125,12 +128,19 @@ export async function getServerSideProps(context) {
     if (mongoose.connections[0].readyState) {
     }
     await mongoose.connect(process.env.MONGO_URI)
-    let product = await Product.findOne({ slug: context.query.slug })
-    let varients = await Product.find({ title: product.title })
+    let product = await products.findOne({ slug: context.query.slug })
+    // console.log(product);
+    let varients = await products.find({ title: product.title })
+    // console.log(varients);
+
     let colorSizeSlug = {}
     for (let item of varients) {
         if (Object.keys(colorSizeSlug).includes(item.color)) {
             colorSizeSlug[item.color][item.size] = { slug: item.slug }
+        } else {
+            colorSizeSlug[item.color] = {}
+            colorSizeSlug[item.color][item.size] = { slug: item.slug }
+            console.log(colorSizeSlug);
         }
     }
     return {
