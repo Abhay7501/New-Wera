@@ -21,7 +21,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = { name, email, password }
-        let res = await fetch('http://localhost:3000/api/signup', {
+        let res = await fetch('/api/signup', {
             method: "POST", // or 'PUT'
             headers: {
                 "Content-Type": "application/json",
