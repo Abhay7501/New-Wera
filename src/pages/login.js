@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const login = () => {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleChange = (e) => {
         if (e.target.name === 'email') {
