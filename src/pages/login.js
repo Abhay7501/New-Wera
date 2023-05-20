@@ -5,20 +5,20 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
 
     const handleChange = (e) => {
         if (e.target.name === 'email') {
-            setEmail(e.target.value)
+            setUserEmail(e.target.value)
         } else if (e.target.name === 'password') {
-            setPassword(e.target.value)
+            setUserPassword(e.target.value)
         }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = { email, password }
+        const data = { email: userEmail, password: userPassword }
         let res = await fetch('/api/signin', {
             method: "POST", // or 'PUT'
             headers: {
@@ -31,8 +31,8 @@ const login = () => {
         try {
             let response = await res.json();
             console.log(response);
-            setEmail("");
-            setPassword("");
+            setUserEmail("");
+            setUserPassword("");
             if (response.success) {
                 toast.success('You are successfully logged in', {
                     position: "bottom-left",
