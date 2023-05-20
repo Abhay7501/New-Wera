@@ -92,10 +92,10 @@ const checkout = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
                         </li>
                     })}
                 </ol>
-                <div className="flex">
-                    <Link href={"/checkout"}><button className="flex mr-1 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg"><BsFillBagCheckFill className='m-1' />Checkout</button></Link>
-                    <button onClick={clearCart} className="flex mr-2 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg">Clear Cart</button>
-                </div>
+                <span className="total">Subtotal: {subTotal}</span>
+            </div>
+            <div className="m-4">
+                <Link href={"/"}><button className="mr-1 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg">Pay</button></Link>
             </div>
         </div>
     )

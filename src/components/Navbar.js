@@ -64,6 +64,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, subTotal, clearCart }) => {
                     <Link href={"/checkout"}><button className="flex mr-1 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg"><BsFillBagCheckFill className='m-1' />Checkout</button></Link>
                     <button onClick={clearCart} className="flex mr-2 text-white bg-slate-600 border-0 py-2 px-5 focus:outline-none hover:bg-slate-800 rounded text-lg">Clear Cart</button>
                 </div>
+                <span className="total mt-8 ">Subtotal: {subTotal}</span>
             </div>
         </div >
 

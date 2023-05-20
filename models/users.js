@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const UsesSchema = new mongoose.Schema({
-    Name: { type: String, requried: true },
+    name: { type: String, requried: true },
     email: { type: String, requried: true, unique: true },
-    password: { type: String, requried: true },
+    password: { type: String, requried: true }
 
 }, { timestamps: true });
-export default mongoose.models("User", UsesSchema);
+mongoose.models = {}
+export default mongoose.model("User", UsesSchema);

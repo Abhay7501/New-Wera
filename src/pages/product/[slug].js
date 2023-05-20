@@ -3,7 +3,7 @@ import { useState } from 'react'
 import mongoose from 'mongoose'
 import products from 'models/products'
 
-const Post = ({ addToCart, product, varients }) => {
+const Post = ({ addToCart, product, varients, clearCart }) => {
     console.log(product, varients)
     const router = useRouter()
     const { slug } = router.query
@@ -26,6 +26,11 @@ const Post = ({ addToCart, product, varients }) => {
     }
     const [color, setcolor] = useState(products.color)
     const [size, setsize] = useState(products.size)
+
+    const buynow = () => {
+        clearCart()
+        addToCart(slug, 1, 799, product.title, product.size, product.color)
+    }
 
     return <>
         <section className="text-gray-600 body-font overflow-hidden">
@@ -104,7 +109,7 @@ const Post = ({ addToCart, product, varients }) => {
                             <span className="title-font font-medium text-2xl text-gray-900">₹100</span>
                             {/* })} */}
                             <button onClick={() => { addToCart(slug, 1, 799, product.title, product.size, product.color) }} className="flex ml-7 text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded">Add to Cart</button>
-                            <button className="flex ml-4 text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded">Buy now</button>
+                            <button onClick={buynow} className="flex ml-4 text-white bg-slate-500 border-0 py-2 px-6 focus:outline-none hover:bg-slate-600 rounded">Buy now</button>
                             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                 <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
